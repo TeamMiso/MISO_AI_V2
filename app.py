@@ -53,7 +53,7 @@ async def image_inference(request: ImageRequest):
     img_tensor = preprocess_img(image_bytes)
 
     # 이미지 추론
-    out = model.predict(img_tensor,save=True)
+    out = model.predict(img_tensor,save=True, conf=0.41)
     result = post_processing(out)
 
     return list(OrderedDict.fromkeys(result))
